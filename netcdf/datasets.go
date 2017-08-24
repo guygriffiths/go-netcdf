@@ -80,3 +80,11 @@ func (ds Dataset) NAttrs() (n int, err error) {
 	n = int(cn)
 	return
 }
+
+// NDims returns the number of dimensions defined for dataset f.
+func (ds Dataset) NDims() (n int, err error) {
+	var cn C.int
+	err = newError(C.nc_inq_ndims(C.int(ds), &cn))
+	n = int(cn)
+	return
+}
